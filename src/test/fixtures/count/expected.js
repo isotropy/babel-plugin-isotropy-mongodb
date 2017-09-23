@@ -1,6 +1,6 @@
-import ispyDb from "isotropy-lib-db";
+import _isotropyMongoDb from "isotropy-lib-db";
 
 
 async function countTodos() {
-  return await ispyDb.count();
+  return await _collection.count();
 }

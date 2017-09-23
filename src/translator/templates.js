@@ -13,11 +13,11 @@ export function insert() {
 }
 
 export function slice() {
-  return template(`find().skip(FROM).limit(TO)`)
+  return template(`skip(FROM).limit(TO)`)
 }
 
 export function sort() {
-  return template(`find().sort({FIELD: ORDER})`);
+  return template(`sort({FIELD: ORDER})`);
 }
 
 export function map() {

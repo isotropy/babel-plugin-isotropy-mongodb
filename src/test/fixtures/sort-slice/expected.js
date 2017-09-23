@@ -1,12 +1,6 @@
-module.exports = {
-  type: "query",
-  method: "slice",
-  from: 10,
-  to: 20,
-  source: {
-    type: "query",
-    method: "sort",
-    fields: [{ field: "assignee", ascending: true }],
-    source: { type: "query", module: "todosDbModule", identifier: "myDb", collection: "todos" }
-  }
-};
+import _isotropyMongoDb from "isotropy-lib-db";
+
+
+async function getTodos() {
+  return (await _collection.sort({ "assignee": 1 })).slice(10, 20);
+}

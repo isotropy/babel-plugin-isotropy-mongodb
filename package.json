@@ -1,13 +1,13 @@
 {
-  "name": "babel-plugin-isotropy-db",
-  "description": "Babel plugin for transforming to lib-db",
+  "name": "babel-plugin-isotropy-mongodb",
+  "description": "Babel plugin for transforming to isotropy-mongodb",
   "version": "0.0.1",
   "author": "Arivanandan<uarivanandan@gmail.com>",
   "contributors": [
     "Jeswin Kumar<jeswinpk@agilehead.com>",
     "Arivanandan<uarivanandan@gmail.com>"
   ],
-  "main": "dist/transform-to-isotropy-db.js",
+  "main": "dist/transform-to-isotropy-mongodb.js",
   "scripts": {
     "test": "mocha dist/test/test.js",
     "debug": "mocha --inspect-brk dist/test/test.js"
@@ -20,9 +20,10 @@
     "url": "https://github.com/isotropy/babel-plugin-isotropy-db/issues"
   },
   "dependencies": {
-    "isotropy-ast-analyzer-db": "0.0.1"
+    "isotropy-ast-analyzer-db": "*"
   },
   "devDependencies": {
+    "babylon": "6.18.0",
     "babel-core": "^6.22.1",
     "babel-plugin-transform-async-to-generator": "^6.22.0",
     "babel-preset-latest": "^6.22.0",

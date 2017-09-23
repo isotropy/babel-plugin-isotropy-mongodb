@@ -2,7 +2,7 @@ import should from "should";
 import * as babel from "babel-core";
 import fs from "fs";
 import path from "path";
-import makePlugin from "../transform-to-isotropy-db";
+import makePlugin from "../transform-to-isotropy-mongodb";
 import sourceMapSupport from "source-map-support";
 
 sourceMapSupport.install();
@@ -60,10 +60,10 @@ describe("isotropy-ast-analyzer-db", () => {
   }
 
   const tests = [
-    // ["collection", "collection"],
-    // ["count", "count"],
-    // ["slice", "slice"],
-    // ["sort", "sort"],
+    // ["collection", "collection"]
+    ["count", "count"],
+    ["slice", "slice"],
+    ["sort", "sort"],
     ["sort-slice", "sort-slice"]
 
   ];
