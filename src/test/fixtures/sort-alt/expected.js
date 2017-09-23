@@ -1,16 +1,6 @@
-module.exports = {
-  type: "query",
-  method: "sort",
-  fields: [
-    {
-      field: "priority",
-      ascending: true
-    }
-  ],
-  source: {
-    type: "query",
-    module: "todosDbModule",
-    identifier: "myDb",
-    collection: "todos"
-  }
+import _isotropyMongoDb from "isotropy-lib-db";
+
+
+async function getTodos(who) {
+  return await _collection.sort({ "priority": 1 });
 }

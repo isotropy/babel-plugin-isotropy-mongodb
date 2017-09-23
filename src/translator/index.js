@@ -1,4 +1,3 @@
-import * as mapper from "./mappers";
 import * as template from "./templates";
 import * as t from "babel-types";
 import generate from "babel-generator";
@@ -20,7 +19,7 @@ export default function translate(analysis) {
     };
 
   const currentTranslation = generate(
-    template[analysis.operation]()(mapper[analysis.operation](analysis))
+    template[analysis.operation](analysis)()
   ).code.replace(";", "");
 
   const { connectionString, collection, translation } = translate(

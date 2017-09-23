@@ -1,15 +1,6 @@
-module.exports = {
-  type: "query",
-  method: "map",
-  fields: [
-    { newField: "owner", field: "assignee" },
-    { newField: "timestamp", field: "createdAt" }
-  ],
-  source: {
-    type: "query",
-    method: "slice",
-    from: 10,
-    to: 20,
-    source: { type: "query", module: "todosDbModule", identifier: "myDb", collection: "todos" }
-  }
-};
+import _isotropyMongoDb from "isotropy-lib-db";
+
+
+async function getTodos(who) {
+  return (await _collection.skip(10).limit(10)).map(todo => ({ owner: todo.assignee, timestamp: todo.createdAt }));
+}

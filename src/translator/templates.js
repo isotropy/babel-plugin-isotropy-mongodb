@@ -1,25 +1,46 @@
 import template from "babel-template";
+import * as t from "babel-types";
+import generate from "babel-generator";
 
-export function count() {
-  return template(`count();`);
-}
-
-export function select() {
+export function select(analysis) {
   return template(`find();`);
 }
 
-export function insert() {
-  return template(`insertMany(ARGS)`);
+export function count(analysis) {
+  return template(`count();`);
 }
 
-export function slice() {
-  return template(`skip(FROM).limit(TO)`)
+export function remove(analysis) {
+  return;
 }
 
-export function sort() {
-  return template(`sort({FIELD: ORDER})`);
+export function insert(analysis) {
+  return template(`insertMany(${generate(analysis.itemsNode).code})`);
 }
 
-export function map() {
+export function slice(analysis) {
+  return analysis.to
+    ? template(`skip(${analysis.from}).limit(${analysis.to - analysis.from})`)
+    : template(`skip(${analysis.from})`);
+}
 
+export function sort(analysis) {
+  const sortDict = analysis.fields
+    .reduce(
+      (acc, cur) => `${acc}, "${cur.field}": ${cur.ascending ? 1 : -1}`,
+      ""
+    )
+    .slice(2);
+
+  return template(`sort({${sortDict}})`);
+}
+
+export function map(analysis) {
+  const stringMap = analysis.fields
+    .reduce((acc, cur) => `${acc}, "${cur.field}": ${cur.newField}`, "")
+    .slice(2);
+
+  return template(`aggregate([
+    {"$project": {${stringMap}}}
+  ])`);
 }
