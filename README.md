@@ -1,7 +1,7 @@
 Isotropy Babel Plugin for FS
 ============================
 This module is a babel plugin that transpiles array operations into corresponding filesystem operations.
-It uses isotropy-ast-analyzer-fs for AST analysis.
+It uses isotropy-ast-analyzer-filesystem for AST analysis.
 
 This is part of the isotropy framework (www.isotropy.org).
 
