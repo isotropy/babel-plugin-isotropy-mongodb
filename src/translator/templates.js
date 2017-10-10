@@ -15,13 +15,13 @@ export function remove(analysis) {
 }
 
 export function insert(analysis) {
-  return template(`insertMany(${generate(analysis.itemsNode).code})`);
+  return template(`insertMany(${generate(analysis.itemsNode).code});`);
 }
 
 export function slice(analysis) {
   return analysis.to
-    ? template(`skip(${analysis.from}).limit(${analysis.to - analysis.from})`)
-    : template(`skip(${analysis.from})`);
+    ? template(`skip(${analysis.from}).limit(${analysis.to - analysis.from});`)
+    : template(`skip(${analysis.from});`);
 }
 
 export function sort(analysis) {
@@ -32,7 +32,7 @@ export function sort(analysis) {
     )
     .slice(2);
 
-  return template(`sort({${sortDict}})`);
+  return template(`sort({${sortDict}});`);
 }
 
 export function map(analysis) {
@@ -42,5 +42,5 @@ export function map(analysis) {
 
   return template(`aggregate([
     {"$project": {${stringMap}}}
-  ])`);
+  ]);`);
 }

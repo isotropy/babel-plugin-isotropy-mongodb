@@ -9,7 +9,6 @@ export default function translate(analysis) {
   with the corresponding mapper function which is inturn fed with the
   result  of  the  analysis (the first argument).
   */
-  if (analysis.operation === void 0) analysis.operation = "select";
 
   if (!analysis.source)
     return {
@@ -18,9 +17,8 @@ export default function translate(analysis) {
       translation: ""
     };
 
-  const currentTranslation = generate(
-    template[analysis.operation](analysis)()
-  ).code.replace(";", "");
+  const currentTranslation = generate(template[analysis.operation](analysis)())
+    .code;
 
   const { connectionString, collection, translation } = translate(
     analysis.source
